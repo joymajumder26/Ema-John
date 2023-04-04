@@ -7,6 +7,7 @@ import Orders from './components/Orders/Orders';
 import Inventory from './components/Inventory/Inventory';
 import Shop from './components/Shop/Shop';
 import About from './components/About/About';
+import { productCartLoader } from './Loaders/ProductsCartLoader';
 
 
 function App() {
@@ -17,10 +18,13 @@ const router = createBrowserRouter([
   children:[
     {
       path:'/',
+      loader:()=> fetch('products.json'),
       element:<Shop></Shop>
     },
     {
       path:'/orders',
+      loader:productCartLoader,
+      
       element:<Orders></Orders>
 
     },
